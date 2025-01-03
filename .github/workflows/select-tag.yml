@@ -24,7 +24,7 @@ jobs:
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       with:
-        name: v${{ github.event.inputs.major_version }}
+        name: ${{ github.ref_name }}
         draft: false
         generateReleaseNotes: true
     - name: Set output
