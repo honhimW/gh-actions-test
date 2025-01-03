@@ -3,8 +3,8 @@ name: Release
 on:
   workflow_dispatch:
     inputs:
-      major_version:
-        description: 'Major Ver.'
+      tag:
+        description: 'Tag'
         required: true
         type: string
 
@@ -23,8 +23,8 @@ jobs:
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       with:
-        tag: ${{ github.event.inputs.major_version }}
-        name: v${{ github.event.inputs.major_version }}
+        tag: ${{ github.event.inputs.tag }}
+        name: ${{ github.event.inputs.tag }}
         draft: false
         generateReleaseNotes: true
     - name: Set output
@@ -87,7 +87,6 @@ jobs:
         asset_path: .\target\release\ratisui-windows-amd64.zip
         asset_name: ratisui-windows-amd64.zip
         asset_content_type: application/octet-stream
-
 
   build-aarch64:
     runs-on: ${{ matrix.os }}
