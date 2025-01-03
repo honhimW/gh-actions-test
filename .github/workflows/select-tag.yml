@@ -11,4 +11,22 @@ jobs:
     steps:
     - name: Echo
       run: echo "${{ github.ref_name }}"
-
+  create_release:
+    runs-on: ubuntu-latest
+    outputs:
+      upload_url: ${{ steps.set_output.outputs.upload_url }}
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+    - name: Create Release
+      id: create_release
+      uses: ncipollo/release-action@v1.14.0
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      with:
+        name: v${{ github.event.inputs.major_version }}
+        draft: false
+        generateReleaseNotes: true
+    - name: Set output
+      id: set_output
+      run: echo "upload_url=${{ steps.create_release.outputs.upload_url }}"
