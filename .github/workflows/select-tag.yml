@@ -3,12 +3,12 @@ name: Release
 on:
   push:
     tags:
-      - v*
+      - v*.*.*
 
 jobs:
   echos:
     runs-on: ubuntu-latest
     steps:
     - name: Echo
-      run: echo "${{ github.tag }}"
+      run: echo "${{ github.ref_name }}"
 
