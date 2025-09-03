@@ -27,11 +27,10 @@ jobs:
     - name: Install Komac
       run: cargo binstall komac -y
     - name: Dry Run
-      shell: pwsh
       run: |
-        komac update "HonhimW.Ratisui" `
-            --version "0.6.0" `
-            --urls "https://github.com/honhimW/ratisui/releases/download/0.6.0/ratisui-windows-amd64.zip" `
+        komac update "HonhimW.Ratisui" \
+            --version "0.6.0" \
+            --urls "https://github.com/honhimW/ratisui/releases/download/0.6.0/ratisui-windows-amd64.zip" \
             --dry-run
       env:
         GITHUB_TOKEN: ${secrets.WINGET_TOKEN}
