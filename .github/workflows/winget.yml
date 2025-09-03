@@ -34,7 +34,7 @@ jobs:
             --urls "https://github.com/honhimW/ratisui/releases/download/0.6.0/ratisui-windows-amd64.zip" `
             --dry-run
       env:
-        GITHUB_TOKEN: 'abc'
+        GITHUB_TOKEN: ${secrets.WINGET_TOKEN}
     # - name: WinGet Releaser
     #   # You may pin to the exact commit or the version.
     #   # uses: vedantmgoyal9/winget-releaser@4ffc7888bffd451b357355dc214d43bb9f23917e
