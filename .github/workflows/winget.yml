@@ -22,6 +22,16 @@ jobs:
       uses: actions/checkout@v4
     - name: Echo token
       run: echo ${{ github.event.release.tag_name || github.ref_name }}
+    - name: Install Cargo Bins
+      uses: cargo-bins/cargo-binstall@main
+    - name: Install Komac
+      run: cargo binstall komac -y
+    - name: Dry Run
+      run: |
+        komac update HonhimW.Ratisui \
+            --version "0.6.0" \
+            --urls "https://github.com/honhimW/ratisui/releases/download/0.6.0/ratisui-windows-amd64.zip" \
+            --dry-run
     # - name: WinGet Releaser
     #   # You may pin to the exact commit or the version.
     #   # uses: vedantmgoyal9/winget-releaser@4ffc7888bffd451b357355dc214d43bb9f23917e
