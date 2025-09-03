@@ -27,7 +27,7 @@ jobs:
     - name: Install Komac
       run: cargo binstall komac -y
     - name: Echo Secret
-      run: echo ${{ WTF }}
+      run: echo ${{ secrets.WTF }}
     - name: Dry Run
       run: |
         komac update "HonhimW.Ratisui" \
