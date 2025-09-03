@@ -27,6 +27,7 @@ jobs:
     - name: Install Komac
       run: cargo binstall komac -y
     - name: Dry Run
+      shell: pwsh
       run: |
         komac update HonhimW.Ratisui \
             --version "0.6.0" \
