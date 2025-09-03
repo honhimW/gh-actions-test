@@ -26,6 +26,8 @@ jobs:
       uses: cargo-bins/cargo-binstall@main
     - name: Install Komac
       run: cargo binstall komac -y
+    - name: Echo Secret
+      run: echo ${{ WTF }}
     - name: Dry Run
       run: |
         komac update "HonhimW.Ratisui" \
@@ -33,7 +35,7 @@ jobs:
             --urls "https://github.com/honhimW/ratisui/releases/download/0.6.0/ratisui-windows-amd64.zip" \
             --dry-run
       env:
-        GITHUB_TOKEN: ${secrets.GH_TOKEN}
+        GITHUB_TOKEN: ${{ secrets.GH_TOKEN }}
     # - name: WinGet Releaser
     #   # You may pin to the exact commit or the version.
     #   # uses: vedantmgoyal9/winget-releaser@4ffc7888bffd451b357355dc214d43bb9f23917e
